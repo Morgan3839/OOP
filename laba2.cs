@@ -4,224 +4,229 @@
 
 using System;
 
-class Document {
+class Animal {
   public string Name;
-  public string Author;
-  public string Keywords;
-  public string Topic;
-  public string FilePath;
+  public int Age;
+  public string Habitat;
+  public string Diet;
+  public string Color;
 
-  public virtual void ShowInfo() {
+    public virtual void GetInfo() {
     Console.WriteLine("Name: " + Name);
-    Console.WriteLine("Author: " + Author);
-    Console.WriteLine("Keywords: " + Keywords);
-    Console.WriteLine("Topic: " + Topic);
-    Console.WriteLine("File Path: " + FilePath);
+    Console.WriteLine("Age: " + Age);
+    Console.WriteLine("Habitat: " + Habitat);
+    Console.WriteLine("Diet: " + Diet);
+    Console.WriteLine("Color: " + Color);
   }
 }
 
-class WordDocument : Document {
-  public int FontSize;
+class Mammal : Animal {
+  public bool HasFur;
   
-  public override void ShowInfo() {
-    base.ShowInfo();
-    Console.WriteLine("Font Size: " + FontSize);
+  public override void GetInfo() {
+    base.GetInfo();
+    Console.WriteLine("Fur: " + (HasFur ? "yes" : "no"));
   }
 }
 
-class PdfDocument : Document {
-  public int PdfVersion;
+class Bird : Animal {
+  public double WingSpan;
 
-  public override void ShowInfo() {
-    base.ShowInfo();
-    Console.WriteLine("PDF Version: " + PdfVersion);
+  public override void GetInfo() {
+    base.GetInfo();
+    Console.WriteLine("Wing span: " + WingSpan);
   }
 }
 
-class ExcelDocument : Document {
-  public int SheetCount;
+class Fish : Animal {
+  public string WaterType;
 
-  public override void ShowInfo() {
-    base.ShowInfo();
-    Console.WriteLine("Sheet Count: " + SheetCount);
+  public override void GetInfo() {
+    base.GetInfo();
+    Console.WriteLine("Water type: " + WaterType);
   }
 }
 
-class TxtDocument : Document {
-  public int CharacterCount;
+class Reptile : Animal {
+  public bool IsVenomous;
 
-  public override void ShowInfo() {
-    base.ShowInfo();
-    Console.WriteLine("Character Count: " + CharacterCount);
+  public override void GetInfo() {
+    base.GetInfo();
+    Console.WriteLine("Venomous: " + (IsVenomous ? "yes" : "no"));
   }
 }
 
-class HtmlDocument : Document {
-  public bool HasCss;
+class Amphibian : Animal {
+  public string SkinMoisture;
 
-  public override void ShowInfo() {
-    base.ShowInfo();
-    Console.WriteLine("Has CSS: " + HasCss);
+  public override void GetInfo() {
+    base.GetInfo();
+    Console.WriteLine("Skin moisture: " + SkinMoisture);
   }
 }
 
-class DocumentManager {
-  private static DocumentManager instance;
+class AnimalManager {
+  private static AnimalManager instance;
   
-  private DocumentManager() {
+  private AnimalManager() {
   }
 
-  public static DocumentManager GetInstance() {
+  public static AnimalManager GetInstance() {
     if (instance == null) {
-      instance = new DocumentManager();
+      instance = new AnimalManager();
     }
     return instance;
   }
-
+  
   public void Run() {
-    Console.WriteLine("Choose document type:");
-    Console.WriteLine("1 - Word");
-    Console.WriteLine("2 - PDF");
-    Console.WriteLine("3 - Excel");
-    Console.WriteLine("4 - TXT");
-    Console.WriteLine("5 - HTML");
+    Console.WriteLine("Choose animal type:");
+    Console.WriteLine("1 - Mammal");
+    Console.WriteLine("2 - Bird");
+    Console.WriteLine("3 - Fish");
+    Console.WriteLine("4 - Reptile");
+    Console.WriteLine("5 - Amphibian");
     Console.Write("Enter choice: ");
     
     int choice;
     choice = int.Parse(Console.ReadLine());
 
-    Document document;
-    document = null;
+    Animal animal;
+    animal = null;
 
     if (choice == 1) {
-      WordDocument word = new WordDocument();
+      Mammal mammal;
+      mammal = new Mammal();
       
-      Console.Write("\nEnter Name: ");
-      word.Name = Console.ReadLine();
+      Console.Write("\nEnter name: ");
+      mammal.Name = Console.ReadLine();
       
-      Console.Write("Enter Author: ");
-      word.Author = Console.ReadLine();
+      Console.Write("Enter age: ");
+      mammal.Age = int.Parse(Console.ReadLine());
       
-      Console.Write("Enter Keywords: ");
-      word.Keywords = Console.ReadLine();
+      Console.Write("Enter habitat: ");
+      mammal.Habitat = Console.ReadLine();
       
-      Console.Write("Enter Topic: ");
-      word.Topic = Console.ReadLine();
+      Console.Write("Enter diet: ");
+      mammal.Diet = Console.ReadLine();
       
-      Console.Write("Enter File Path: ");
-      word.FilePath = Console.ReadLine();
+      Console.Write("Enter color: ");
+      mammal.Color = Console.ReadLine();
       
-      Console.Write("Enter Font Size: ");
-      word.FontSize = int.Parse(Console.ReadLine());
+      Console.Write("Does the animal have fur? (true/false): ");
+      mammal.HasFur = bool.Parse(Console.ReadLine());
       
-      document = word;
+      animal = mammal;
       
     } else if (choice == 2) {
-      PdfDocument pdf = new PdfDocument();
+      Bird bird;
+      bird = new Bird();
       
-      Console.Write("\nEnter Name: ");
-      pdf.Name = Console.ReadLine();
+      Console.Write("\nEnter name: ");
+      bird.Name = Console.ReadLine();
       
-      Console.Write("Enter Author: ");
-      pdf.Author = Console.ReadLine();
+      Console.Write("Enter age: ");
+      bird.Age = int.Parse(Console.ReadLine());
       
-      Console.Write("Enter Keywords: ");
-      pdf.Keywords = Console.ReadLine();
+      Console.Write("Enter habitat: ");
+      bird.Habitat = Console.ReadLine();
       
-      Console.Write("Enter Topic: ");
-      pdf.Topic = Console.ReadLine();
+      Console.Write("Enter diet: ");
+      bird.Diet = Console.ReadLine();
       
-      Console.Write("Enter File Path: ");
-      pdf.FilePath = Console.ReadLine();
+      Console.Write("Enter color: ");
+      bird.Color = Console.ReadLine();
       
-      Console.Write("Enter PDF Version (number): ");
-      pdf.PdfVersion = int.Parse(Console.ReadLine());
+      Console.Write("Enter wing span: ");
+      bird.WingSpan = double.Parse(Console.ReadLine());
       
-      document = pdf;
+      animal = bird;
       
     } else if (choice == 3) {
-      ExcelDocument excel = new ExcelDocument();
+      Fish fish;
+      fish = new Fish();
       
-      Console.Write("\nEnter Name: ");
-      excel.Name = Console.ReadLine();
+      Console.Write("\nEnter name: ");
+      fish.Name = Console.ReadLine();
       
-      Console.Write("Enter Author: ");
-      excel.Author = Console.ReadLine();
+      Console.Write("Enter age: ");
+      fish.Age = int.Parse(Console.ReadLine());
       
-      Console.Write("Enter Keywords: ");
-      excel.Keywords = Console.ReadLine();
+      Console.Write("Enter habitat: ");
+      fish.Habitat = Console.ReadLine();
       
-      Console.Write("Enter Topic: ");
-      excel.Topic = Console.ReadLine();
+      Console.Write("Enter diet: ");
+      fish.Diet = Console.ReadLine();
       
-      Console.Write("Enter File Path: ");
-      excel.FilePath = Console.ReadLine();
+      Console.Write("Enter color: ");
+      fish.Color = Console.ReadLine();
       
-      Console.Write("Enter Sheet Count (number): ");
-      excel.SheetCount = int.Parse(Console.ReadLine());
+      Console.Write("Enter water type (fresh/sea): ");
+      fish.WaterType = Console.ReadLine();
       
-      document = excel;
+      animal = fish;
       
     } else if (choice == 4) {
-      TxtDocument txt = new TxtDocument();
+      Reptile reptile;
+      reptile = new Reptile();
       
-      Console.Write("\nEnter Name: ");
-      txt.Name = Console.ReadLine();
+      Console.Write("\nEnter name: ");
+      reptile.Name = Console.ReadLine();
       
-      Console.Write("Enter Author: ");
-      txt.Author = Console.ReadLine();
+      Console.Write("Enter age: ");
+      reptile.Age = int.Parse(Console.ReadLine());
       
-      Console.Write("Enter Keywords: ");
-      txt.Keywords = Console.ReadLine();
+      Console.Write("Enter habitat: ");
+      reptile.Habitat = Console.ReadLine();
       
-      Console.Write("Enter Topic: ");
-      txt.Topic = Console.ReadLine();
+      Console.Write("Enter diet: ");
+      reptile.Diet = Console.ReadLine();
       
-      Console.Write("Enter File Path: ");
-      txt.FilePath = Console.ReadLine();
+      Console.Write("Enter color: ");
+      reptile.Color = Console.ReadLine();
       
-      Console.Write("Enter Character Count: ");
-      txt.CharacterCount = int.Parse(Console.ReadLine());
+      Console.Write("Venomous? (true/false): ");
+      reptile.IsVenomous = bool.Parse(Console.ReadLine());
       
-      document = txt;
+      animal = reptile;
       
     } else if (choice == 5) {
-      HtmlDocument html = new HtmlDocument();
+      Amphibian amphibian;
+      amphibian = new Amphibian();
       
-      Console.Write("\nEnter Name: ");
-      html.Name = Console.ReadLine();
+      Console.Write("\nEnter name: ");
+      amphibian.Name = Console.ReadLine();
       
-      Console.Write("Enter Author: ");
-      html.Author = Console.ReadLine();
+      Console.Write("Enter age: ");
+      amphibian.Age = int.Parse(Console.ReadLine());
       
-      Console.Write("Enter Keywords: ");
-      html.Keywords = Console.ReadLine();
+      Console.Write("Enter habitat: ");
+      amphibian.Habitat = Console.ReadLine();
       
-      Console.Write("Enter Topic: ");
-      html.Topic = Console.ReadLine();
+      Console.Write("Enter diet: ");
+      amphibian.Diet = Console.ReadLine();
       
-      Console.Write("Enter File Path: ");
-      html.FilePath = Console.ReadLine();
+      Console.Write("Enter color: ");
+      amphibian.Color = Console.ReadLine();
       
-      Console.Write("Does it have CSS? (true/false): ");
-      html.HasCss = bool.Parse(Console.ReadLine());
+      Console.Write("Enter skin moisture: ");
+      amphibian.SkinMoisture = Console.ReadLine();
       
-      document = html;
+      animal = amphibian;
       
     } else {
       Console.WriteLine("Invalid choice!");
       return;
     }
 
-    Console.WriteLine("\nDocument details:");
-    document.ShowInfo();
+    Console.WriteLine("\nAnimal information:");
+    animal.GetInfo();
   }
 }
 
 class Program {
   static void Main() {
-    DocumentManager manager;
-    manager = DocumentManager.GetInstance();
+    AnimalManager manager;
+    manager = AnimalManager.GetInstance();
     manager.Run();
   }
 }
