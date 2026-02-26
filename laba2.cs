@@ -5,57 +5,59 @@
 using System;
 
 class Animal {
-  private string name;
-  private int age;
-  private string habitat;
-  private string diet;
-  private string color;
+  private string _name;
+  private int _age;
+  private string _habitat;
+  private string _diet;
+  private string _color;
   
   public string Name {
     get {
-      return name;
+      return _name;
     }
     
     set {
-      name = value;
+      _name = value;
     }
   }
   
   public int Age {
     get { 
-      return age;
+      return _age;
     } 
     
     set {
-      age = value; 
+      _age = value; 
     } 
   }
   
   public string Habitat { 
     get {
-      return habitat;
+      return _habitat;
     } 
     
     set {
-      habitat = value;
+      _habitat = value;
     } 
   }
   
   public string Diet { 
     get {
-      return diet;
+      return _diet;
     } 
+    
     set {
-      diet = value;
+      _diet = value;
     } 
   }
   
   public string Color { 
     get {
-      return color;
+      return _color;
     } 
+    
     set {
-      color = value;
+      _color = value;
     } 
   }
 
@@ -69,15 +71,15 @@ class Animal {
 }
 
 class Mammal : Animal {
-  private bool hasFur;
+  private bool _hasFur;
   
   public bool HasFur {
     get {
-      return hasFur;
+      return _hasFur;
     }
     
     set {
-      hasFur = value;
+      _hasFur = value;
     }
   }
   
@@ -88,15 +90,15 @@ class Mammal : Animal {
 }
 
 class Bird : Animal {
-  private double wingSpan;
+  private double _wingSpan;
 
   public double WingSpan {
     get {
-      return wingSpan;
+      return _wingSpan;
     }
     
     set {
-      wingSpan = value;
+      _wingSpan = value;
     }
   }
 
@@ -107,15 +109,15 @@ class Bird : Animal {
 }
 
 class Fish : Animal {
-  private string waterType;
+  private string _waterType;
 
   public string WaterType {
     get {
-      return waterType;
+      return _waterType;
     }
     
     set {
-      waterType = value;
+      _waterType = value;
     }
   }
 
@@ -126,15 +128,15 @@ class Fish : Animal {
 }
 
 class Reptile : Animal {
-  private bool isVenomous;
+  private bool _isVenomous;
 
   public bool IsVenomous {
     get {
-      return isVenomous;
+      return _isVenomous;
     }
     
     set {
-      isVenomous = value;
+      _isVenomous = value;
     }
   }
 
@@ -145,15 +147,15 @@ class Reptile : Animal {
 }
 
 class Amphibian : Animal {
-  private string skinMoisture;
+  private string _skinMoisture;
 
   public string SkinMoisture {
     get {
-      return skinMoisture;
+      return _skinMoisture;
     }
     
     set {
-      skinMoisture = value;
+      _skinMoisture = value;
     }
   }
 
