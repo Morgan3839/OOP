@@ -5,11 +5,59 @@
 using System;
 
 class Animal {
-  public string Name;
-  public int Age;
-  public string Habitat;
-  public string Diet;
-  public string Color;
+  private string name;
+  private int age;
+  private string habitat;
+  private string diet;
+  private string color;
+  
+  public string Name {
+    get {
+      return name;
+    }
+    
+    set {
+      name = value;
+    }
+  }
+  
+  public int Age {
+    get { 
+      return age;
+    } 
+    
+    set {
+      age = value; 
+    } 
+  }
+  
+  public string Habitat { 
+    get {
+      return habitat;
+    } 
+    
+    set {
+      habitat = value;
+    } 
+  }
+  
+  public string Diet { 
+    get {
+      return diet;
+    } 
+    set {
+      diet = value;
+    } 
+  }
+  
+  public string Color { 
+    get {
+      return color;
+    } 
+    set {
+      color = value;
+    } 
+  }
 
     public virtual void GetInfo() {
     Console.WriteLine("Name: " + Name);
@@ -21,7 +69,17 @@ class Animal {
 }
 
 class Mammal : Animal {
-  public bool HasFur;
+  private bool hasFur;
+  
+  public bool HasFur {
+    get {
+      return hasFur;
+    }
+    
+    set {
+      hasFur = value;
+    }
+  }
   
   public override void GetInfo() {
     base.GetInfo();
@@ -30,7 +88,17 @@ class Mammal : Animal {
 }
 
 class Bird : Animal {
-  public double WingSpan;
+  private double wingSpan;
+
+  public double WingSpan {
+    get {
+      return wingSpan;
+    }
+    
+    set {
+      wingSpan = value;
+    }
+  }
 
   public override void GetInfo() {
     base.GetInfo();
@@ -39,7 +107,17 @@ class Bird : Animal {
 }
 
 class Fish : Animal {
-  public string WaterType;
+  private string waterType;
+
+  public string WaterType {
+    get {
+      return waterType;
+    }
+    
+    set {
+      waterType = value;
+    }
+  }
 
   public override void GetInfo() {
     base.GetInfo();
@@ -48,7 +126,17 @@ class Fish : Animal {
 }
 
 class Reptile : Animal {
-  public bool IsVenomous;
+  private bool isVenomous;
+
+  public bool IsVenomous {
+    get {
+      return isVenomous;
+    }
+    
+    set {
+      isVenomous = value;
+    }
+  }
 
   public override void GetInfo() {
     base.GetInfo();
@@ -57,7 +145,17 @@ class Reptile : Animal {
 }
 
 class Amphibian : Animal {
-  public string SkinMoisture;
+  private string skinMoisture;
+
+  public string SkinMoisture {
+    get {
+      return skinMoisture;
+    }
+    
+    set {
+      skinMoisture = value;
+    }
+  }
 
   public override void GetInfo() {
     base.GetInfo();
@@ -66,16 +164,16 @@ class Amphibian : Animal {
 }
 
 class AnimalManager {
-  private static AnimalManager instance;
+  private static AnimalManager s_instance;
   
   private AnimalManager() {
   }
 
   public static AnimalManager GetInstance() {
-    if (instance == null) {
-      instance = new AnimalManager();
+    if (s_instance == null) {
+      s_instance = new AnimalManager();
     }
-    return instance;
+    return s_instance;
   }
   
   public void Run() {
